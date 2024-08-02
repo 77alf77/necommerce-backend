@@ -8,26 +8,16 @@ on:
 
 jobs:
   build:
-    name: Build and Analyze
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Java
-        uses: actions/setup-java@v3
+      - uses: actions/checkout@v2
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v1
         with:
-          distribution: 'adopt-openjdk'
-          java-version: '11'
-
-      - name: Build with Gradle
-        run: ./gradlew build
-
-      - name: Set up CodeQL
-        uses: github/codeql-action/setup@v3
-        with:
-          languages: java
-
-      - name: Analyze code with CodeQL
-        uses: github/codeql-action/analyze@v3
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
+          registry: ghcr.io
+          repository: netology-code/necommerce-backend
+          tag_with_ref: true
