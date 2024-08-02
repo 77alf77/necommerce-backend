@@ -18,19 +18,19 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          java-version: '11' # Укажите версию Java, используемую в вашем проекте
-          distribution: 'adopt-openjdk' # Укажите дистрибутив Java, например 'adopt-openjdk', 'zulu', и т.д.
+          java-version: '11'
+          distribution: 'adopt-openjdk'
 
       - name: Build
-        run: ./gradlew build # Выполните сборку проекта с помощью Gradle, если это необходимо
+        run: ./gradlew build
 
       - name: Set up CodeQL
-        uses: github/codeql-action/setup@v3
+        uses: github/codeql-action/setup@v2
         with:
-          languages: java # Укажите язык программирования
+          languages: java
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@v2
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
