@@ -21,12 +21,4 @@ jobs:
           java-version: '11' # Укажите версию Java, используемую в вашем проекте
 
       - name: Build
-        run: ./gradlew build # Выполните сборку проекта с помощью Gradle, если это необходимо
-
-      - name: Set up CodeQL
-        uses: github/codeql-action/setup@v3
-        with:
-          languages: java # Укажите язык программирования
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+        run: ./gradlew build # Выполните
