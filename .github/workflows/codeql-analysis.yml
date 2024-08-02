@@ -19,20 +19,15 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'adopt-openjdk'
+          distribution: 'adoptopenjdk'
 
-      - name: Build
+      - name: Build with Gradle
         run: ./gradlew build
 
       - name: Set up CodeQL
-        uses: github/codeql-action/setup@v2
+        uses: github/codeql-action/setup@v3
         with:
           languages: java
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
-
-      - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: /path/to/your/sarif/file.sarif
+        uses: github/codeql-action/analyze@v3
